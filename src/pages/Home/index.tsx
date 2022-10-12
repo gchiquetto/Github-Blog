@@ -3,6 +3,7 @@ import {
   HomeContent,
   InfoContainer,
   Overview,
+  PostsCardsContainer,
   ProfileCard,
   ProfileCardContent,
 } from './styles'
@@ -10,6 +11,7 @@ import { ArrowSquareOut } from 'phosphor-react'
 import { FaGithub, FaBuilding } from 'react-icons/fa'
 import { BsPeopleFill } from 'react-icons/bs'
 import { FormSearch } from './components/FormSearch'
+import { PostCard } from './components/PostCard'
 export function Home() {
   return (
     <HomeContainer>
@@ -49,6 +51,14 @@ export function Home() {
           <p>6 posts</p>
         </Overview>
         <FormSearch />
+        <PostsCardsContainer>
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+        </PostsCardsContainer>
       </HomeContent>
     </HomeContainer>
   )

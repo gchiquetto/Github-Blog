@@ -88,3 +88,15 @@ export const Overview = styled.div`
   display: flex;
   justify-content: space-between;
 `
+
+export const PostsCardsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+
+  @media (max-width: 758px) {
+    grid-template-columns: 1fr;
+  }
+`
