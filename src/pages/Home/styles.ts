@@ -3,6 +3,10 @@ import styled from 'styled-components'
 export const HomeContainer = styled.div`
   max-width: 54rem;
   margin: 0 auto;
+
+  @media (max-width: 865px) {
+    padding: 0 1rem;
+  }
 `
 
 export const ProfileCard = styled.div`
@@ -18,6 +22,15 @@ export const ProfileCard = styled.div`
     width: 9.25rem;
     height: 9.25rem;
     border-radius: 8px;
+  }
+
+  @media (max-width: 758px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 580px) {
+    padding: 1.5rem;
   }
 `
 

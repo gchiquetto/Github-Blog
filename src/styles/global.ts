@@ -24,4 +24,10 @@ export const GlobalStyle = createGlobalStyle`
         font: 400 1rem 'Nunito', sans-serif;
         line-height: 160%;
     }
+
+    @media (max-width: 480px){
+        html{
+            font-size:82.5%
+        }
+    }
 `
