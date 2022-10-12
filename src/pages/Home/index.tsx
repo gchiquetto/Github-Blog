@@ -1,12 +1,15 @@
 import {
   HomeContainer,
+  HomeContent,
   InfoContainer,
+  Overview,
   ProfileCard,
   ProfileCardContent,
 } from './styles'
 import { ArrowSquareOut } from 'phosphor-react'
 import { FaGithub, FaBuilding } from 'react-icons/fa'
 import { BsPeopleFill } from 'react-icons/bs'
+import { FormSearch } from './components/FormSearch'
 export function Home() {
   return (
     <HomeContainer>
@@ -39,6 +42,14 @@ export function Home() {
           </InfoContainer>
         </ProfileCardContent>
       </ProfileCard>
+
+      <HomeContent>
+        <Overview>
+          <h2>Posts</h2>
+          <p>6 posts</p>
+        </Overview>
+        <FormSearch />
+      </HomeContent>
     </HomeContainer>
   )
 }

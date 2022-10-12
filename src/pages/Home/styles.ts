@@ -79,3 +79,12 @@ export const InfoContainer = styled.div`
     }
   }
 `
+
+export const HomeContent = styled.main`
+  margin-top: 4.5rem;
+`
+
+export const Overview = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
