@@ -2,14 +2,48 @@ import {
   InfoContainer,
   PostContainer,
   PostContent,
-  PostContentCode,
   PostContentText,
   PostInfoContainer,
 } from './styles'
 import { ArrowSquareOut, Calendar, CaretLeft, ChatCircle } from 'phosphor-react'
 import { FaGithub } from 'react-icons/fa'
+import { useParams } from 'react-router-dom'
+import { api } from '../../lib/axios'
+import { useEffect, useState } from 'react'
+import { dateFormatter } from '../../utils/formatter'
+import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
+
+interface IssuesFormat {
+  title?: string
+  id?: number
+  html_url?: string
+  body?: string
+  comments?: number
+  created_at?: string
+  number?: number
+  user?: { login: string }
+}
 
 export function Post() {
+  const { postId } = useParams()
+  const [issue, setIssue] = useState<IssuesFormat>({})
+
+  const id = Number(postId)
+  console.log(id)
+
+  async function fetchUserRepoIssue(username: string) {
+    const response = await api.get(
+      `/repos/${username}/Github-Blog/issues/${id}`,
+    )
+    setIssue(response.data)
+  }
+
+  useEffect(() => {
+    fetchUserRepoIssue('gchiquetto')
+  }, [])
+
+  const createdAt = issue.created_at && dateFormatter(issue.created_at)
   return (
     <PostContainer>
       <PostInfoContainer>
@@ -18,43 +52,32 @@ export function Post() {
             <CaretLeft />
             Back
           </a>
-          <a href="https://github.com/gchiquetto">
+          <a href={issue.html_url}>
             GITHUB <ArrowSquareOut />
           </a>
         </header>
-        <h1>JavaScript data types and data structures</h1>
+        <h1>{issue.title}</h1>
         <InfoContainer>
           <span>
             <FaGithub />
-            gchiquetto
+            {issue.user?.login}
           </span>
           <span>
-            <Calendar weight="fill" />1 day ago
+            <Calendar weight="fill" />
+            {createdAt}
           </span>
           <span>
-            <ChatCircle weight="fill" />5 comments
+            <ChatCircle weight="fill" />
+            {issue.comments} comments
           </span>
         </InfoContainer>
       </PostInfoContainer>
       <PostContent>
         <PostContentText>
-          <p>
-            Programming languages all have built-in data structures, but these
-            often differ from one language to another. This article attempts to
-            list the built-in data structures available in JavaScript and what
-            properties they have. These can be used to build other data
-            structures. Wherever possible, comparisons with other languages are
-            drawn. Dynamic typing JavaScript is a loosely typed and dynamic
-            language. Variables in JavaScript are not directly associated with
-            any particular value type, and any variable can be assigned (and
-            re-assigned) values of all types:
-          </p>
+          {issue.body && (
+            <ReactMarkdown remarkPlugins={[gfm]}>{issue.body}</ReactMarkdown>
+          )}
         </PostContentText>
-        <PostContentCode>
-          <p>let foo = 42; // foo is now a number</p>
-          <p>foo = ‘bar’; // foo is now a string</p>
-          <p>foo = true; // foo is now a boolean</p>
-        </PostContentCode>
       </PostContent>
     </PostContainer>
   )

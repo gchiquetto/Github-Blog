@@ -7,16 +7,17 @@ export const PostCardContainer = styled.div`
   padding: 2rem;
   border-radius: 10px;
   background-color: ${(props) => props.theme['base-post']};
-  cursor: pointer;
 
   header {
     display: flex;
     gap: 1rem;
   }
 
-  h2 {
+  a {
     font-size: 1.25rem;
     font-weight: 700;
+    text-decoration: none;
+    color: ${(props) => props.theme['base-title']};
   }
 
   span {

@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import { PostCardContainer } from './styles'
 import gfm from 'remark-gfm'
-import { formatDistanceToNow } from 'date-fns'
+import { dateFormatter } from '../../../../utils/formatter'
 
 interface UserIssuesFormatData {
   data: {
@@ -11,20 +11,17 @@ interface UserIssuesFormatData {
     body: string
     comments: number
     created_at: string
+    number: number
   }
 }
 
 export function PostCard({ data }: UserIssuesFormatData) {
-  const formatDate = formatDistanceToNow(new Date(data.created_at), {
-    addSuffix: true,
-  })
-
-  const createdAt = formatDate.charAt(0).toUpperCase() + formatDate.slice(1)
+  const createdAt = dateFormatter(data.created_at)
 
   return (
     <PostCardContainer>
       <header>
-        <h2>{data.title}</h2>
+        <a href={`/post/${data.number}`}>{data.title}</a>
         <span>{createdAt}</span>
       </header>
 

@@ -87,14 +87,45 @@ export const PostContent = styled.main`
   }
 `
 
-export const PostContentText = styled.div``
-
-export const PostContentCode = styled.div`
+export const PostContentText = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  border-radius: 2px;
-  padding: 1rem;
-  font-family: 'Fira Code', monospace;
-  background-color: ${(props) => props.theme['base-post']};
+  gap: 1rem;
+
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.blue};
+  }
+
+  img {
+    width: 100%;
+  }
+
+  pre {
+    overflow-x: auto;
+    color-scheme: dark;
+  }
+
+  code {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-radius: 2px;
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    background-color: ${(props) => props.theme['base-post']};
+    min-width: fit-content;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: hsla(0, 0%, var(--lightness), 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, var(--lightness), 0.7);
+    border-radius: 0.5rem;
+  }
 `

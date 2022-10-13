@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   HomeContainer,
   HomeContent,
@@ -13,7 +14,6 @@ import { BsPeopleFill } from 'react-icons/bs'
 import { FormSearch } from './components/FormSearch'
 import { PostCard } from './components/PostCard'
 import { api } from '../../lib/axios'
-import { useEffect, useState } from 'react'
 
 interface UserCardInfo {
   login?: string
@@ -57,6 +57,7 @@ interface UserIssuesFormat {
   body: string
   comments: number
   created_at: string
+  number: number
 }
 
 export function Home() {
