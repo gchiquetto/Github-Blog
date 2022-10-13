@@ -78,6 +78,10 @@ export const InfoContainer = styled.div`
       color: ${(props) => props.theme['base-label']};
     }
   }
+
+  @media (max-width: 480px) {
+    gap: 0.875rem;
+  }
 `
 
 export const HomeContent = styled.main`
