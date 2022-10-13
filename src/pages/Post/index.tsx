@@ -6,16 +6,15 @@ import {
   PostContentText,
   PostInfoContainer,
 } from './styles'
-import { ArrowSquareOut, CaretLeft } from 'phosphor-react'
-import { FaGithub, FaBuilding } from 'react-icons/fa'
-import { BsPeopleFill } from 'react-icons/bs'
+import { ArrowSquareOut, Calendar, CaretLeft, ChatCircle } from 'phosphor-react'
+import { FaGithub } from 'react-icons/fa'
 
 export function Post() {
   return (
     <PostContainer>
       <PostInfoContainer>
         <header>
-          <a href="">
+          <a href="/">
             <CaretLeft />
             Back
           </a>
@@ -30,12 +29,10 @@ export function Post() {
             gchiquetto
           </span>
           <span>
-            <FaBuilding />
-            Enschede - Netherlands
+            <Calendar weight="fill" />1 day ago
           </span>
           <span>
-            <BsPeopleFill />
-            72 followers
+            <ChatCircle weight="fill" />5 comments
           </span>
         </InfoContainer>
       </PostInfoContainer>
