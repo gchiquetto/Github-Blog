@@ -7,6 +7,7 @@ export const PostCardContainer = styled.div`
   padding: 2rem;
   border-radius: 10px;
   background-color: ${(props) => props.theme['base-post']};
+  cursor: pointer;
 
   header {
     display: flex;
@@ -22,5 +23,12 @@ export const PostCardContainer = styled.div`
     min-width: fit-content;
     font-size: 0.875rem;
     color: ${(props) => props.theme['base-span']};
+  }
+
+  .postcard_content {
+    color: ${(props) => props.theme['base-text']};
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 160%;
   }
 `

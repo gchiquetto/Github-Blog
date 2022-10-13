@@ -50,16 +50,37 @@ interface UserCardInfo {
   updated_at?: string
 }
 
+interface UserIssuesFormat {
+  title: string
+  id: number
+  html_url: string
+  body: string
+  comments: number
+  created_at: string
+}
+
 export function Home() {
   const [userData, setUserData] = useState<UserCardInfo>({})
+  const [userIssues, setUserIssues] = useState<UserIssuesFormat[]>([])
 
   async function fetchUserInformations(username: string) {
     const response = await api.get(`/users/${username}`)
     setUserData(response.data)
   }
 
+  async function fetchUserRepoIssues(username: string, query?: string) {
+    const url = query
+      ? `/search/issues?q=${query}%20repo:${username}/Github-Blog`
+      : `/search/issues?q=%20repo:${username}/Github-Blog`
+
+    const response = await api.get(url)
+    const data = response.data
+    setUserIssues([...data.items])
+  }
+
   useEffect(() => {
     fetchUserInformations('gchiquetto')
+    fetchUserRepoIssues('gchiquetto')
   }, [])
 
   return (
@@ -94,16 +115,13 @@ export function Home() {
       <HomeContent>
         <Overview>
           <h2>Posts</h2>
-          <p>6 posts</p>
+          <p>{userIssues.length} posts</p>
         </Overview>
-        <FormSearch />
+        <FormSearch fetchUserRepoIssues={fetchUserRepoIssues} />
         <PostsCardsContainer>
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          {userIssues.map((issue) => (
+            <PostCard key={issue.id} data={issue} />
+          ))}
         </PostsCardsContainer>
       </HomeContent>
     </HomeContainer>
