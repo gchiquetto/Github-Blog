@@ -30,7 +30,6 @@ export function Post() {
   const [issue, setIssue] = useState<IssuesFormat>({})
 
   const id = Number(postId)
-  console.log(id)
 
   async function fetchUserRepoIssue(username: string) {
     const response = await api.get(

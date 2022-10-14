@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
+  EmptySearchContainer,
   HomeContainer,
   HomeContent,
   InfoContainer,
@@ -8,7 +9,7 @@ import {
   ProfileCard,
   ProfileCardContent,
 } from './styles'
-import { ArrowSquareOut } from 'phosphor-react'
+import { ArrowSquareOut, SmileySad } from 'phosphor-react'
 import { FaGithub, FaBuilding } from 'react-icons/fa'
 import { BsPeopleFill } from 'react-icons/bs'
 import { FormSearch } from './components/FormSearch'
@@ -18,36 +19,15 @@ import { api } from '../../lib/axios'
 interface UserCardInfo {
   login?: string
   id?: number
-  node_id?: string
   avatar_url?: string
-  gravatar_id?: string
-  url?: string
   html_url?: string
-  followers_url?: string
-  following_url?: string
-  gists_url?: string
-  starred_url?: string
-  subscriptions_url?: string
-  organizations_url?: string
-  repos_url?: string
-  events_url?: string
-  received_events_url?: string
-  type?: string
-  site_admin?: false
   name?: string
-  company?: string
-  blog?: string
   location?: string
-  email?: string
-  hireable?: string
   bio?: string
-  twitter_username?: string
   public_repos?: number
-  public_gists?: number
   followers?: number
   following?: number
   created_at?: string
-  updated_at?: string
 }
 
 interface UserIssuesFormat {
@@ -119,11 +99,19 @@ export function Home() {
           <p>{userIssues.length} posts</p>
         </Overview>
         <FormSearch fetchUserRepoIssues={fetchUserRepoIssues} />
-        <PostsCardsContainer>
-          {userIssues.map((issue) => (
-            <PostCard key={issue.id} data={issue} />
-          ))}
-        </PostsCardsContainer>
+        {userIssues.length === 0 ? (
+          <EmptySearchContainer>
+            <SmileySad size={64} />
+            <strong>Oh no, no issues found</strong>
+            <p>Try searching for another word</p>
+          </EmptySearchContainer>
+        ) : (
+          <PostsCardsContainer>
+            {userIssues.map((issue) => (
+              <PostCard key={issue.id} data={issue} />
+            ))}
+          </PostsCardsContainer>
+        )}
       </HomeContent>
     </HomeContainer>
   )

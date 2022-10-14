@@ -104,3 +104,18 @@ export const PostsCardsContainer = styled.div`
     grid-template-columns: 1fr;
   }
 `
+export const EmptySearchContainer = styled.div`
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border: 2px solid ${(props) => props.theme['base-border']};
+  border-radius: 8px;
+  gap: 0.5rem;
+
+  strong {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+  }
+`
