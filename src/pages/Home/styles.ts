@@ -18,6 +18,17 @@ export const ProfileCard = styled.div`
   box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
   gap: 2rem;
 
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.blue};
+    border-bottom: 1px solid transparent;
+  }
+
+  a:hover {
+    color: ${(props) => props.theme.blue};
+    border-bottom: 1px solid ${(props) => props.theme.blue};
+  }
+
   img {
     width: 9.25rem;
     height: 9.25rem;

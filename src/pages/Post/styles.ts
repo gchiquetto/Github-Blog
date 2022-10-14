@@ -4,6 +4,17 @@ export const PostContainer = styled.div`
   max-width: 54rem;
   margin: 0 auto;
 
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.blue};
+    border-bottom: 1px solid transparent;
+  }
+
+  a:hover {
+    color: ${(props) => props.theme.blue};
+    border-bottom: 1px solid ${(props) => props.theme.blue};
+  }
+
   @media (max-width: 865px) {
     padding: 0 1rem;
   }
@@ -91,11 +102,6 @@ export const PostContentText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  a {
-    text-decoration: none;
-    color: ${(props) => props.theme.blue};
-  }
 
   img {
     width: 100%;

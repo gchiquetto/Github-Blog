@@ -20,6 +20,10 @@ export const PostCardContainer = styled.div`
     color: ${(props) => props.theme['base-title']};
   }
 
+  a:hover {
+    color: ${(props) => props.theme.blue};
+  }
+
   span {
     min-width: fit-content;
     font-size: 0.875rem;
