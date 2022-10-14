@@ -77,6 +77,10 @@ export const InfoContainer = styled.div`
       color: ${(props) => props.theme['base-label']};
     }
   }
+  @media (max-width: 544px) {
+    justify-content: space-between;
+    text-align: center;
+  }
 
   @media (max-width: 480px) {
     gap: 0.875rem;
