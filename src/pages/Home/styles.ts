@@ -82,16 +82,26 @@ export const InfoContainer = styled.div`
   span {
     display: flex;
     align-items: center;
+    text-align: center;
+
     gap: 0.5rem;
     color: ${(props) => props.theme['base-subtitle']};
 
     svg {
       color: ${(props) => props.theme['base-label']};
     }
-  }
 
-  @media (max-width: 480px) {
-    gap: 0.875rem;
+    @media (max-width: 544px) {
+      justify-content: space-between;
+
+      span {
+        flex: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      gap: 0.875rem;
+    }
   }
 `
 

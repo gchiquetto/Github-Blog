@@ -79,11 +79,11 @@ export function Home() {
           <InfoContainer>
             <span>
               <FaGithub />
-              {userData.login}
+              <p>{userData.login}</p>
             </span>
             <span>
               <FaBuilding />
-              {userData.location}
+              <p>{userData.location}</p>
             </span>
             <span>
               <BsPeopleFill />
